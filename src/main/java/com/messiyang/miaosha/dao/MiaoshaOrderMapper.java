@@ -1,7 +1,9 @@
 package com.messiyang.miaosha.dao;
 
 import com.messiyang.miaosha.model.MiaoshaOrder;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface MiaoshaOrderMapper {
     int deleteByPrimaryKey(Long id);
 

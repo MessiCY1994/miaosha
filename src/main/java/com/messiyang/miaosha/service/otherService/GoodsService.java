@@ -2,6 +2,7 @@ package com.messiyang.miaosha.service.otherService;
 
 
 import com.messiyang.miaosha.dao.GoodsMapper;
+import com.messiyang.miaosha.dao.MiaoshaGoodsMapper;
 import com.messiyang.miaosha.model.MiaoshaGoods;
 import com.messiyang.miaosha.model.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +14,23 @@ import java.util.List;
 public class GoodsService {
 
     @Autowired
-    GoodsMapper goodsDao;
+    GoodsMapper goodsMapper;
+
+    @Autowired
+    MiaoshaGoodsMapper miaoshaGoodsMapper;
 
     public List<GoodsVo> listGoodsVo() {
-        return goodsDao.listGoodsVo();
+        return goodsMapper.listGoodsVo();
     }
 
     public GoodsVo getGoodsVoByGoodsId(long goodsId) {
-        return goodsDao.getGoodsVoByGoodsId(goodsId);
+        return goodsMapper.getGoodsVoByGoodsId(goodsId);
     }
 
     public boolean reduceStock(GoodsVo goods) {
         MiaoshaGoods g = new MiaoshaGoods();
         g.setGoodsId(goods.getId());
-        int ret = goodsDao.reduceStock(g);
+        int ret = miaoshaGoodsMapper.reduceStock(g);
         return ret > 0;
     }
 
@@ -34,8 +38,8 @@ public class GoodsService {
         for (GoodsVo goods : goodsList) {
             MiaoshaGoods g = new MiaoshaGoods();
             g.setGoodsId(goods.getId());
-            g.setStockCount(goods.getStockCount());
-            goodsDao.resetStock(g);
+            g.setStockCount(goods.getStockCount().toString());
+            miaoshaGoodsMapper.resetStock(g);
         }
     }
 
