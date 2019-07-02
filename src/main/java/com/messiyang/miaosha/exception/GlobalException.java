@@ -1,21 +1,21 @@
 package com.messiyang.miaosha.exception;
 
 
-import com.messiyang.miaosha.result.CodeMsg;
+import com.messiyang.miaosha.result.enums.ResultStatus;
 
 public class GlobalException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    private CodeMsg cm;
+    private ResultStatus resultStatus;
 
-    public GlobalException(CodeMsg cm) {
-        super(cm.toString());
-        this.cm = cm;
+    public GlobalException(ResultStatus resultStatus) {
+        super(resultStatus.toString());
+        this.resultStatus = resultStatus;
     }
 
-    public CodeMsg getCm() {
-        return cm;
+    public ResultStatus getCm() {
+        return resultStatus;
     }
 
 }

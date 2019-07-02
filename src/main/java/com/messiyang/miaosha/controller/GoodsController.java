@@ -6,7 +6,6 @@ import com.messiyang.miaosha.model.vo.GoodsDetailVo;
 import com.messiyang.miaosha.model.vo.GoodsVo;
 import com.messiyang.miaosha.redis.GoodsKey;
 import com.messiyang.miaosha.redis.RedisService;
-import com.messiyang.miaosha.result.Result;
 import com.messiyang.miaosha.service.otherService.GoodsService;
 import com.messiyang.miaosha.service.otherService.MiaoshaUserService;
 import org.apache.commons.lang3.StringUtils;

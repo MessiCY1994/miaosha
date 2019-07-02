@@ -1,8 +1,6 @@
 package com.messiyang.miaosha.exception;
 
 
-import com.messiyang.miaosha.result.CodeMsg;
-import com.messiyang.miaosha.result.Result;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
