@@ -5,6 +5,7 @@ import com.messiyang.miaosha.dao.MiaoshaUserMapper;
 import com.messiyang.miaosha.exception.GlobalException;
 import com.messiyang.miaosha.model.MiaoshaUser;
 import com.messiyang.miaosha.model.vo.LoginVo;
+import com.messiyang.miaosha.redis.MiaoshaKey;
 import com.messiyang.miaosha.redis.MiaoshaUserKey;
 import com.messiyang.miaosha.redis.RedisService;
 import com.messiyang.miaosha.result.enums.ResultStatus;
@@ -128,6 +129,31 @@ public class MiaoshaUserService {
         cookie.setMaxAge(MiaoshaUserKey.token.expireSeconds());
         cookie.setPath("/");
         response.addCookie(cookie);
+    }
+
+    /**
+     * 获取验证码
+     * @return
+     */
+    public String getCheckCode(String telphone) {
+
+        String code = createRandomVcode();
+        redisService.set(MiaoshaKey.miaoshaVerifyCodeRegister,telphone,code);
+        return code;
+    }
+
+    /**
+     * 6位简单密码
+     *
+     * @return
+     */
+    public static String createRandomVcode() {
+        //密码
+        String vcode = "";
+        for (int i = 0; i < 6; i++) {
+            vcode = vcode + (int) (Math.random() * 9);
+        }
+        return vcode;
     }
 
 }
