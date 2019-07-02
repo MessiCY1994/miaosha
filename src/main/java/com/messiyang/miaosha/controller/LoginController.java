@@ -50,4 +50,14 @@ public class LoginController {
         miaoshaUserService.login(response, loginVo);
         return result;
     }
+
+
+
+    @RequestMapping("/create_token")
+    @ResponseBody
+    public String createToken(HttpServletResponse response, @Valid LoginVo loginVo) {
+        log.info(loginVo.toString());
+        String token = miaoshaUserService.login(response, loginVo);
+        return token;
+    }
 }

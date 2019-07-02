@@ -85,7 +85,7 @@ public class MiaoshaUserService {
 
 
     /**
-     * 用户登录
+     * 用户登录/创建token
      * @param response
      * @param loginVo
      * @return
@@ -113,6 +113,8 @@ public class MiaoshaUserService {
         addCookie(response, token, user);
         return token;
     }
+
+
 
     /**
      * 存放cookie
